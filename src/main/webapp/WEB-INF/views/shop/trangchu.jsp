@@ -17,7 +17,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item position-relative active" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="https://img.dtcn.com/image/themanual/best-sneakers.jpg"
+                            <img class="position-absolute w-100 h-100" src="https://stefano.vn/wp-content/uploads/2020/04/vest-nam-v69k4-01.jpg"
                                 style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <div class="carousel-item position-relative" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="https://c1.wallpaperflare.com/preview/878/712/970/active-enjoying-happy-legs.jpg"
+                            <img class="position-absolute w-100 h-100" src="https://thoitrangteenthienphuc.vn/upload/sanpham/o-hoodie-ni-ngoai-in-ufo,-mac-mua-he-bao-mat-7808.jpg"
                                 style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="carousel-item position-relative" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="https://balovnxk.vn/wp-content/uploads/2021/06/ERK01131.jpg"
+                            <img class="position-absolute w-100 h-100" src="https://salt.tikicdn.com/cache/400x400/ts/product/38/df/17/a9dbcb90ede74cc86a994d2f13ab8d0d.jpg"
                                 style="object-fit: cover;">
                             <div class=" carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
@@ -68,7 +68,7 @@
             <div class="row px-xl-5">
                 <div class="col-md-6">
                     <div class="product-offer mb-30" style="height: 300px;">
-                        <img class="img-fluid" src="http://file.hstatic.net/1000282067/file/air-jordan-1-high-555088-035-1_b7cbf1b959a04b12b19ba24804ec6815_2048x2048.jpg" alt="">
+                        <img class="img-fluid" src="https://cf.shopee.vn/file/f80f7a3482757e099911e1e067d920d2" alt="">
                         <div class="offer-text">
                             <h5 class="text-white text-uppercase">Tiết kiệm 20%</h5>
                             <h1 class="text-white mb-3">Mua từ 2 sản phẩm</h1>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="product-offer mb-30" style="height: 300px;">
-                        <img class="img-fluid" src="https://giaygiare.vn/upload/images/top-10-mau-giay-sneaker-duoc-yeu-thich-nhat-nam-2020-8.jpg" alt="">
+                        <img class="img-fluid" src="https://bizweb.dktcdn.net/100/287/440/products/ao-hoodie-co-non-mau-xam-nu.jpg?v=1609755827503" alt="">
                         <div class="offer-text">
                             <h5 class="text-white text-uppercase">ƯU ĐÃI ĐẶC BIỆT</h5>
                             <h1 class="text-white text-center mb-3"><span>Áp dụng đối với</span><br><span>tài khoản mới</span></h1>
