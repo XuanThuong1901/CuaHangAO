@@ -613,7 +613,7 @@
 											<!-- <h3 class="profile-username text-center text-primary"></h3> -->
 
 											<p class="text-muted text-center">
-												${thongTinNV.getTaiKhoan().getVaitro().getTenVT() }</p>
+												${thongTinNV.getTaiKhoan().getVaiTro() }</p>
 
 										</div>
 										<!-- /.card-body -->

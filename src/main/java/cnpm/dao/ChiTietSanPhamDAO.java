@@ -22,18 +22,20 @@ public class ChiTietSanPhamDAO {
 	SessionFactory factory;
 	
 	
-	public ChiTietSanPham getByCacMa(Integer maCTSP, Integer maMau, Integer maSize) {
+	public ChiTietSanPham getByMaSPandMaSize(Integer maSP, Integer maSize) {
 		Session session = factory.getCurrentSession();
-		String hql = "from ChiTietSanPham where maChiTietSP = :maCTSP";
+		String hql = "from ChiTietSanPham where maSP = :maSP and maSize = :maSize";
 		Query query = session.createQuery(hql);
-		query.setParameter("maCTSP", maCTSP);
+		query.setParameter("maSP", maSP);
+		query.setParameter("maSize", maSize);
 		List<ChiTietSanPham> res = query.list();
 		
 		if(res.size() == 0) {
 			return null;
 		}
 		
-		return res.get(0);
+		ChiTietSanPham ctsp = res.get(0);
+		return ctsp;
 	}
 	
 	public ChiTietSanPham getByMaCTSPM(Integer maCTSP){

@@ -23,6 +23,10 @@ public class SanPhamService {
 		return sanPhamDAO.getDSSanPham();
 	}
 	
+	public List<SanPham> getDSSanPhamTheoDM(Integer maDM){
+		return sanPhamDAO.getDSSanPhamTheoDM(maDM);
+	}
+	
 	public SanPham getByMaSP(Integer maSP) {
 		return sanPhamDAO.getByMaSP(maSP);
 	}

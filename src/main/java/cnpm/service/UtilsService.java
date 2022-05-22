@@ -20,8 +20,8 @@ public class UtilsService {
 		try{
 			System.out.println("sys "+System.currentTimeMillis());
 
-			String path = System.currentTimeMillis() + file.getOriginalFilename();
-			String filePath = context.getRealPath("/resources/file/" + path );
+			String path = file.getOriginalFilename();
+			String filePath = context.getRealPath("file:///D:/Java-Eclipse/cuahangao/src/main/webapp/resources/file/" + path );
 			file.transferTo(new File(filePath));
 			
 			

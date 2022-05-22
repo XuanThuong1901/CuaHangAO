@@ -45,6 +45,11 @@ public class TaiKhoanService {
 		return taiKhoanDAO.sua(taikhoan);
 	}
 	
+	public Boolean thayDoiMK(TaiKhoan taiKhoan, String mk) {
+		taiKhoan.setMatKhau(hashPass(mk));
+		return taiKhoanDAO.sua(taiKhoan);
+	}
+	
 	public Boolean xoaTK(TaiKhoan taikhoan) {
 		return taiKhoanDAO.xoa(taikhoan);
 	}
@@ -110,7 +115,5 @@ public class TaiKhoanService {
 		
 		return taiKhoanDAO.them(taikhoan);
 	}
-
-
 	
 }

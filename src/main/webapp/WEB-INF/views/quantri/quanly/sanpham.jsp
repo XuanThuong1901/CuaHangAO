@@ -111,9 +111,9 @@
 											<td>
 												<div class="d-flex justify-content-between px-2">
 													<a class="" href="quanly/sanpham/${sp.getMaSP()}?thongtin"><i
-														class="fas fa-info-circle"></i> </a> <a class=""
-														href="quanly/sanpham/${sp.getMaSP()}?suaThongtin"><i
-														class="fas fa-edit"></i> </a> <a class="" href="#"
+														class="fas fa-info-circle"></i> </a> <a class="" 
+														href="quanly/sanpham/${sp.getMaSP()}?suaThongtin"
+														><i class="fas fa-edit"></i> </a> <a class="" href="#"
 														data-toggle="modal" data-target="#exampleModalConfirm">
 														<i class="fas fa-folder-plus"></i>
 													</a> <a class="" href="#" data-toggle="modal"
@@ -605,7 +605,8 @@
 																</div>
 															</div>
 															<div class="form-group row">
-																<label for="" class="col-sm-2 col-form-label">Danh
+																<label for=""
+																	class="col-sm-2 col-form-label">Danh
 																	mục</label>
 																<form:select path="danhMuc.maDM"
 																	items="${danhSachDanhMucSanPham }"
@@ -614,7 +615,8 @@
 																<form:errors path="danhMuc.maDM" cssClass="text-danger" />
 															</div>
 															<div class="form-group row">
-																<label for="" class="col-sm-2 col-form-label">Phái</label>
+																<label for=""
+																	class="col-sm-2 col-form-label">Phái</label>
 																<div class="col-sm-10">
 																	<div class="form-check form-check-inline">
 																		<form:radiobutton path="phai" value="True" label="Nam"
@@ -629,34 +631,35 @@
 																</div>
 															</div>
 															<div class="form-group row">
-																<label for="" class="col-sm-2 col-form-label">Mô
+																<label for=""
+																	class="col-sm-2 col-form-label">Mô
 																	tả </label>
 																<div class="col-sm-10">
-																	<form:input path="moTa" class="form-control" id=""
-																		placeholder="" />
+																	<form:input path="moTa" class="form-control" id="" placeholder=""/>
 																	<form:errors path="moTa" cssClass="text-danger" />
 																</div>
 															</div>
 															<div class="form-group row">
-																<label for="inputSkills" class="col-sm-2 col-form-label">Giá
+																<label for="inputSkills"
+																	class="col-sm-2 col-form-label">Giá
 																</label>
 																<div class="col-sm-10">
-																	<form:input path="gia" class="form-control" id=""
-																		placeholder="" />
+																	<form:input path="gia" class="form-control" id="" placeholder=""/>
 																	<form:errors path="gia" cssClass="text-danger" />
 																</div>
 															</div>
 															<div class="form-group row">
-																<label for="inputSkills" class="col-sm-2 col-form-label">Giảm
+																<label for="inputSkills"
+																	class="col-sm-2 col-form-label">Giảm
 																	giá </label>
 																<div class="col-sm-10">
-																	<form:input path="giamGia" class="form-control" id=""
-																		placeholder="" />
+																	<form:input path="giamGia" class="form-control" id="" placeholder=""/>
 																	<form:errors path="giamGia" cssClass="text-danger" />
 																</div>
 															</div>
 															<div class="form-group row">
-																<label for="" class="col-sm-2 col-form-label">Màu</label>
+																<label for=""
+																	class="col-sm-2 col-form-label">Màu</label>
 																<form:select path="mauSanPham.maMau"
 																	items="${danhSachMau }"
 																	class="form-control form-select" itemValue="maMau"
@@ -733,47 +736,32 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form:form action="quanly/sanpham?themCTSP" class="form-horizontal"
-					method="post" modelAttribute="chiTietShanPhamMoi"
-					enctype="multipart/form-data">
-					<div class="row">
-
-
-						<div class="col-md-12">
-							<div class="form-group">
-								<label for="" class="col-sm-2 col-form-label text-primary">Size</label>
-								<c:forEach var="size" items="${danhSachSize}" varStatus="status">
-									<form:input path="sizeSanPham.maSize" type="radio" name="size" alt="Checkbox"
-										value="${size.getMaSize() }"></form:input>
-									<label for="vehicle1">"${size.getTenSize()}" </label>
-								</c:forEach>
-								<form:errors path="sizeSanPham.maSize" cssClass="text-danger" />
-
-							</div>
-
-
-							<div class="form-group row">
-								<label for="inputSkills"
-									class="col-sm-2 col-form-label text-primary">Số lượng </label>
-								<div class="col-sm-10">
-									<form:input path="soLuong" class="form-control" />
-									<form:errors path="soLuong" cssClass="text-danger" />
-								</div>
-							</div>
-
-
-
-
-							<div class="form-group row d-flex justify-content-end">
-								<button type="submit" class="btn btn-primary">Thêm</button>
-								<a href="quanly/sanpham" id="cancel-save-modal"
-									class="mx-2 btn btn-secondary">Hủy</a>
-							</div>
-
-						</div>
+				<form>
+					<div class="form-group">
+						<label for="inputEmail4">Mã chi tiết</label> <input type="email"
+							class="form-control" id="inputEmail4" placeholder="M38789792">
+					</div>
+					<div class="form-group">
+						<label for="inputEmail4">Thêm hình ảnh </label>
+						<button type="submit" class="btn bg-dark">
+							<i class="fas fa-upload"></i>
+						</button>
+					</div>
+					<div class="form-group">
+						<label for="inputAddress">Số lượng</label> <input type="text"
+							class="form-control" id="inputAddress" placeholder="300">
 					</div>
 
-				</form:form>
+					<div class="form-group">
+						<label for="inputPassword4">Mã màu</label> <input type="password"
+							class="form-control" id="inputPassword4" placeholder="ABCDEF">
+					</div>
+					<div class="form-group">
+						<label for="inputPassword4">Mã size</label> <input type="password"
+							class="form-control" id="inputPassword4" placeholder="ABCDEF">
+					</div>
+
+				</form>
 			</div>
 			<div class="modal-footer d-flex justify-content-between">
 				<button type="button" class="btn"

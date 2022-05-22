@@ -11,7 +11,7 @@
 			<div class="col-12">
 				<nav class="breadcrumb bg-light mb-30">
 					<a class="breadcrumb-item text-dark" href="#">Home</a> <span
-						class="breadcrumb-item active">Contact</span>
+						class="breadcrumb-item active">Liên hệ</span>
 				</nav>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 	<div class="container-fluid">
 		<h2
 			class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-			<span class="bg-secondary pr-3">Contact Us</span>
+			<span class="bg-secondary pr-3">Liên hệ</span>
 		</h2>
 		<div class="row px-xl-5">
 			<div class="col-lg-7 mb-5">
@@ -70,14 +70,14 @@
 				</div>
 				<div class="bg-light p-30 mb-3">
 					<p class="mb-2">
-						<i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street,
-						New York, USA
+						<i class="fa fa-map-marker-alt text-primary mr-3"></i>97 Man Thiện,
+						Hiệp Phú, TP Thủ Đức, TP Hồ Chí Minh
 					</p>
 					<p class="mb-2">
-						<i class="fa fa-envelope text-primary mr-3"></i>info@example.com
+						<i class="fa fa-envelope text-primary mr-3"></i>nxthuong1901@gmail.com
 					</p>
 					<p class="mb-2">
-						<i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890
+						<i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 6789
 					</p>
 				</div>
 			</div>

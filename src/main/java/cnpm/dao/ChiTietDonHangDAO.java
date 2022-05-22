@@ -7,10 +7,12 @@ import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import cnpm.entity.ChiTietDonHang;
+import cnpm.entity.DonHang;
 
 @Transactional
 @Repository
@@ -30,5 +32,47 @@ public class ChiTietDonHangDAO {
 		}
 		
 		return res;
+	}
+	
+	public Boolean them(ChiTietDonHang chiTietDonHang) {
+		Boolean isSuccess = true;
+		Session session = factory.openSession();
+		Transaction t = session.beginTransaction();
+		
+		try {
+			session.save(chiTietDonHang);
+			t.commit();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println(e.getCause());
+			t.rollback();
+			isSuccess = false;
+		}
+		finally {
+			session.close();
+		}
+		return isSuccess;
+	}
+	
+	public Boolean sua(ChiTietDonHang chiTietDonHang) {
+		Boolean isSuccess = true;
+		Session session = factory.openSession();
+		Transaction t = session.beginTransaction();
+		
+		try {
+			session.update(chiTietDonHang);
+			t.commit();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println(e.getCause());
+			t.rollback();
+			isSuccess = false;
+		}
+		finally {
+			session.close();
+		}
+		return isSuccess;
 	}
 }

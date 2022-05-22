@@ -14,6 +14,12 @@ public class DonHangService {
 	@Autowired
 	DonHangDAO donHangDAO;
 	
+	public Integer maPNCuoiCung() {
+		List<DonHang> phieuNhap = this.getDSDonHang();
+		Integer index = phieuNhap.get(phieuNhap.size()-1).getMaDH();
+		return index;
+	}
+	
 	public List<DonHang> getDSDonHang(){
 		return donHangDAO.getDSDonHang();
 	}

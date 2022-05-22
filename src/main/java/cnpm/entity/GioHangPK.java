@@ -63,18 +63,6 @@ public class GioHangPK implements Serializable {
 			return false;
 		return true;
 	}
-
-	
-	
-	public GioHangPK() {
-		super();
-	}
-
-	public GioHangPK(String maKH, int maCTSP) {
-		super();
-		this.maKH = maKH;
-		this.maCTSP = maCTSP;
-	}
 	
 	
 	

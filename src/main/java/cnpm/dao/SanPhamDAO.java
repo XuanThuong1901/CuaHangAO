@@ -30,6 +30,17 @@ public class SanPhamDAO {
 		return list;
 	}
 	
+	public List<SanPham> getDSSanPhamTheoDM(Integer maDanhMuc){
+		Session session = factory.getCurrentSession();
+		String hql = "from SanPham where maDanhMuc = :maDanhMuc";
+		Query query = session.createQuery(hql);
+		
+		query.setParameter("maDanhMuc", maDanhMuc);
+		List<SanPham> list = query.list();
+		
+		return list;
+	}
+	
 	public SanPham getByMaSP(Integer maSP) {
 		Session session = factory.getCurrentSession();
 		String hql = "from SanPham where maSP = :maSP";

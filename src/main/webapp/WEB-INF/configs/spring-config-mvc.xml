@@ -90,6 +90,10 @@
 			<mvc:mapping path="/taikhoan" />
 			<bean class="cnpm.interceptor.KhachHangInterceptor" />
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/giohang//**" />
+			<bean class="cnpm.interceptor.KhachHangInterceptor" />
+		</mvc:interceptor>
 		
 
 		<mvc:interceptor>

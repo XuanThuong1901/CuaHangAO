@@ -129,11 +129,8 @@
 									<div class="dropdown-menu dropdown-menu-right">
 
 										<c:choose>
-											<c:when test="${user.getVaitro().getMaVT() == 'NV' }">
-												<a href="nhanvien/tongquan" class="dropdown-item">Tài
-													Khoản </a>
-											</c:when>
-											<c:when test="${user.getVaitro().getMaVT()=='QL' }">
+											
+											<c:when test="${user.getVaitro()=='QL' }">
 												<a href="quanly/tongquan" class="dropdown-item">Quản lý
 												</a>
 											</c:when>
@@ -178,7 +175,7 @@
 				<a href="trangchu" class="text-decoration-none"> <!-- <span class="h1 text-uppercase text-primary bg-dark px-2">Multi</span> -->
 					<!-- <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span> -->
 					<span class="h2 text-uppercase text-dark px-2 ml-n1"
-					style="font-weight: 800;">shoeniverse</span>
+					style="font-weight: 800;">HavinaShop</span>
 				</a>
 			</div>
 			<div class="col-lg-5 col-6">
@@ -213,12 +210,12 @@
 	<!-- Navbar Start -->
 	<div class="container-fluid bg-dark mb-30">
 		<div class="row">
-			<div class="col-lg-2 d-none d-lg-block">
+			<div class="col-lg-2 d-none d-lg-block ">
 				<a
-					class="btn d-flex align-items-center justify-content-between bg-primary w-100"
+					class="btn d-flex align-items-center justify-content-between bg-primary w-100 "
 					data-toggle="collapse" href="#navbar-vertical"
 					style="height: 65px; padding: 0 30px;">
-					<h6 class="text-dark m-0">
+					<h6 class="text-dark m-0 ">
 						<i class="fa fa-bars mr-2"></i>DANH MỤC
 					</h6> <i class="fa fa-angle-down text-dark"></i>
 				</a>
@@ -229,11 +226,12 @@
 					<div class="navbar-nav w-100 dropdown-menu rounded-0 border-0">
 
 						<c:forEach var="danhmuc" items="${danhSachDanhMucSanPham }">
-							<a href="/danhmuc/${danhmuc.maDM }" class="nav-item nav-link">${danhmuc.tenDM}</a>
+							<div class="d-flex justify-content-between px-4">
+								<a class="nav-item nav-link" href="danhmuc/${danhmuc.getMaDM()}?ds">${danhmuc.tenDM}</a>
+
+							</div>
+							<%-- <a href="danhmuc/${danhmuc.maDM }?ds" class="nav-item nav-link">${danhmuc.tenDM}</a> --%>
 						</c:forEach>
-						<a href="" class="nav-item nav-link">SNEAKER</a> <a href=""
-							class="nav-item nav-link">SANDAL</a> <a href=""
-							class="nav-item nav-link">DÉP</a>
 					</div>
 				</nav>
 			</div>
@@ -251,24 +249,13 @@
 						id="navbarCollapse">
 						<div class="navbar-nav mr-auto py-0">
 							<a href="sanpham" class="nav-item nav-link"><span>SẢN
-									PHẨM </span></a>
-							<div class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle"
-									data-toggle="dropdown">MUA SẮM<i
-									class="fa fa-angle-down ml-1 mt-1"></i></a>
-								<div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-									<a href="cart.html" class="dropdown-item">NAM</a> <a
-										href="checkout.html" class="dropdown-item">NỮ</a>
-								</div>
-							</div>
-							<a href="detail.html" class="nav-item nav-link">CHI TIẾT SẢN
-								PHẨM</a> <a href="contact.html" class="nav-item nav-link">LIÊN
+									PHẨM </span></a> <a href="lienhe" class="nav-item nav-link">LIÊN
 								HỆ</a>
 						</div>
 						<div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-							<a href="user.html" class="btn px-0"> <i
+							<a href="taikhoan" class="btn px-0"> <i
 								class="fas fa-user text-primary"></i>
-							</a> <a href="" class="btn px-0 ml-3"> <i
+							</a> <a href="giohang" class="btn px-0 ml-3"> <i
 								class="fas fa-shopping-cart text-primary"></i> <span
 								class="badge text-secondary border border-secondary rounded-circle"
 								style="padding-bottom: 2px;">0</span>
