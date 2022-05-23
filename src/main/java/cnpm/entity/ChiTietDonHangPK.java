@@ -17,7 +17,7 @@ public class ChiTietDonHangPK implements Serializable {
 	private int maCTSP;
 	
 	@Column(name="MaDH")
-	private String maKH;
+	private int maDH;
 
 	public int getMaCTSP() {
 		return maCTSP;
@@ -27,12 +27,12 @@ public class ChiTietDonHangPK implements Serializable {
 		this.maCTSP = maCTSP;
 	}
 
-	public String getMaKH() {
-		return maKH;
+	public int getMaDH() {
+		return maDH;
 	}
 
-	public void setMaKH(String maKH) {
-		this.maKH = maKH;
+	public void setMaDH(int maKH) {
+		this.maDH = maKH;
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class ChiTietDonHangPK implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + maCTSP;
-		result = prime * result + ((maKH == null) ? 0 : maKH.hashCode());
+		result = prime * result + maDH;
 		return result;
 	}
 
@@ -55,10 +55,7 @@ public class ChiTietDonHangPK implements Serializable {
 		ChiTietDonHangPK other = (ChiTietDonHangPK) obj;
 		if (maCTSP != other.maCTSP)
 			return false;
-		if (maKH == null) {
-			if (other.maKH != null)
-				return false;
-		} else if (!maKH.equals(other.maKH))
+		if (maDH != other.maDH)
 			return false;
 		return true;
 	}

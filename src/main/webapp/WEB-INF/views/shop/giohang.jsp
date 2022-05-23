@@ -5,9 +5,8 @@
 <%@include file="/WEB-INF/views/shop/include/header.jsp"%>
 <!-- Header End -->
 <style>
-	table tr img {
+table tr img {
 	width: 150px;
-	
 }
 </style>
 
@@ -59,28 +58,28 @@
 
 								<td class="align-middle">
 									<div class="input-group quantity mx-auto" style="width: 100px;">
-										<div class="input-group-btn">
+										<!-- <div class="input-group-btn">
 											<form action="" method="post">
 												<button class="btn btn-sm btn-primary btn-minus" name="update">
 													<i class="fa fa-minus"></i>
 												</button>
 											</form>
-										</div>
+										</div> -->
 										<input type="text" name="soluong"
 											class="form-control form-control-sm bg-secondary border-0 text-center"
 											value="${giohang.getSoLuong() }" />
 
-										<div class="input-group-btn">
+										<!-- <div class="input-group-btn">
 											<form action="" method="post">
 												<button class="btn btn-sm btn-primary btn-plus" name="update">
 													<i class="fa fa-plus"></i>
 												</button>
 											</form>
-										</div>
+										</div> -->
 									</div>
 								</td>
 								<td class="align-middle">
-									<form action="">
+									<form method="post">
 										<button class="btn btn-sm btn-danger" name="xoagiohang"
 											value="${giohang.getChiTietSP().getMaChiTietSP() }">
 											<i class="fa fa-times"></i>
@@ -103,31 +102,37 @@
 					<div class="border-bottom pb-2">
 						<div class="d-flex justify-content-between mb-3">
 							<h6>Tổng tiền sản phẩm</h6>
-							<h6>$150</h6>
+							<h6>${tongtien }VNĐ</h6>
 						</div>
 						<div class="d-flex justify-content-between">
 							<h6 class="font-weight-medium">Phí ship</h6>
-							<h6 class="font-weight-medium">$10</h6>
+							<h6 class="font-weight-medium">21.000.00 VNĐ</h6>
 						</div>
 					</div>
 					<div class="pt-2">
 						<div class="d-flex justify-content-between mt-2">
 							<h5>Tổng đơn thanh toán</h5>
-							<h5>$160</h5>
+							<h5>${tongdon }VNĐ</h5>
 						</div>
 
 
 					</div>
-					<div>
-						<label for="" class="d-flex justify-content-between mt-2">Hình
-							Thức thanh toán</label> <select name="httt"
-							class="form-control form-select select2bs4">
-							<c:forEach var="httt" items="${danhSachHinhThucThanhToan}">
-								<option value="${httt.getMaHTTT()}">${httt.getKieuTT()}</option>
-							</c:forEach>
-						</select>
-					</div>
-					<form action="">
+					<form method="post">
+						<div>
+							<label for="" class="d-flex justify-content-between mt-2">Hình
+								Thức thanh toán</label> <select name="httt"
+								class="form-control form-select select2bs4">
+								<c:forEach var="httt" items="${danhSachHinhThucThanhToan}">
+									<option value="${httt.getMaHTTT()}">${httt.getKieuTT()}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div>
+							<label for="" class="d-flex justify-content-between mt-2">Ghi chú</label>
+							<input type="text" class="form-control form-select select2bs4" name="ghichu">
+							<!-- <span class="input-group-text" name="ghichu"></span> -->
+						</div>
+
 						<button name="thanhtoan"
 							class="btn btn-block btn-primary font-weight-bold my-3 py-3">Thanh
 							Toán</button>

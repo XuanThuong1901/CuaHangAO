@@ -48,21 +48,21 @@
 										<span class="badge border font-weight-normal">${dm.getSanPhams().size() }</span>
 										</a></li> --%>
 
-							<div
-								class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-								<input type="checkbox" class="custom-control-input"
-									alt="checkbox"> <label class="custom-control-label"
-									for="category-nike">${dm.getTenDM() }</label> <span
-									class="badge border font-weight-normal">${dm.getSanPhams().size() }</span>
-							</div>
-						</c:forEach>
-							
+								<div
+									class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+									<input type="checkbox" class="custom-control-input"
+										alt="checkbox"> <label class="custom-control-label"
+										for="category-nike">${dm.getTenDM() }</label> <span
+										class="badge border font-weight-normal">${dm.getSanPhams().size() }</span>
+								</div>
+							</c:forEach>
+
 						</form>
 					</div>
 				</div>
 				<!-- Categories End -->
-				
-				
+
+
 
 				<!-- Size Start -->
 				<h5 class="section-title position-relative text-uppercase mb-3"
@@ -75,90 +75,90 @@
 					<div class="bg-light p-4 mb-30">
 						<div class="d-flex flex-wrap g-2">
 							<c:forEach var="s" items="${danhSachSize }">
-										<button data-masize="${s.getMaSize() }" class="btn border m-1 btn-filter-size" id="btn-size--${s.getTenSize() }">${s.getTenSize() }</button>
-							
+								<button data-masize="${s.getMaSize() }"
+									class="btn border m-1 btn-filter-size"
+									id="btn-size--${s.getTenSize() }">${s.getTenSize() }</button>
+
 							</c:forEach>
+						</div>
+
+
 					</div>
-
-					<!-- <div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-2">
-							<input type="checkbox" class="custom-control-input" id="size-5">
-							<label class="custom-control-label ml-1" for="size-5">Tất
-								cả</label>
-
-						</div> -->
 				</div>
+
+				<!-- Size End -->
+
 			</div>
-
-			<!-- Size End -->
-
-		</div>
-		<!-- Shop Sidebar End -->
+			<!-- Shop Sidebar End -->
 
 
-		<!-- Shop Product Start -->
-		<div class="col-lg-9 col-md-8">
-			<div class="row pb-3">
-				<div class="col-12">
-				</div>
-				<jsp:useBean id="pagedListHolder" scope="request"
-					type="org.springframework.beans.support.PagedListHolder" />
-				<c:url value="/danhmuc" var="pagedLink">
-					<c:param name="p" value="~" />
-				</c:url>
-				<%-- <c:forEach var="sp" items="${danhSachSanPham }"> --%>
-				<c:forEach var="sp" items="${pagedListHolder.pageList }">
-					<div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-						<div class="product-item bg-light mb-4">
-							<div class="product-img position-relative overflow-hidden"
-								style="height: 320px;">
-								<!-- <span class="badge bg-warning">NEW</span>  -->
-								<img class="img-fluid w-100"
-									src="resources/file/${sp.getHinhAnh() }" alt="">
-								<!-- src="resources/user/img/product-1.jpg" src="resources/file/${sp.getHinhAnh() }" -->
-								<div class="product-action d-flex">
-									<div class="d-flex flex-row">
-										<a class="btn btn-outline-dark btn-square" href=""><i
-											class="fa fa-shopping-cart"></i></a>
-										<!-- <a
+			<!-- Shop Product Start -->
+			<div class="col-lg-9 col-md-8">
+				<div class="row pb-3">
+					<div class="col-12"></div>
+					<jsp:useBean id="pagedListHolder" scope="request"
+						type="org.springframework.beans.support.PagedListHolder" />
+					<c:url value="/sanpham" var="pagedLink">
+						<c:param name="p" value="~" />
+					</c:url>
+					<%-- <c:forEach var="sp" items="${danhSachSanPham }"> --%>
+					<c:forEach var="sp" items="${pagedListHolder.pageList}">
+						<div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+							<div class="product-item bg-light mb-4">
+								<div class="product-img position-relative overflow-hidden"
+									style="height: 320px;">
+									<!-- <span class="badge bg-warning">NEW</span>  -->
+									<img class="img-fluid w-100"
+										src="resources/file/${sp.getHinhAnh() }" alt="">
+									<!-- src="resources/user/img/product-1.jpg" src="resources/file/${sp.getHinhAnh() }" -->
+									<div class="product-action d-flex">
+										<div class="d-flex flex-row">
+											<a class="btn btn-outline-dark btn-square"
+												href="chitietsanpham/${sp.getMaSP() }?ctsp"><i
+												class="fa fa-shopping-cart"></i></a>
+											<!-- <a
 											class="btn btn-outline-dark btn-square" href=""><i
 											class="fa fa-sync-alt"></i></a> <a
 											class="btn btn-outline-dark btn-square" href=""><i
 											class="fa fa-search"></i></a> -->
+										</div>
+
+										<button data-id="${sp.getMaSP() }" name="ctsp"											class="btn text-uppercase btn-product-buynow"
+											style="display: inline-block;">mua ngay</button>
 									</div>
 
-									<button data-id="${sp.getMaSP() }"
-										class="btn text-uppercase btn-product-buynow"
-										style="display: inline-block;">mua ngay</button>
+
+
 								</div>
+								<div class="text-center py-4 text-pd"
+									style="overflow-wrap: break-word;">
+									<a class="h6 text-decoration-none text-truncate"
+										style="word-wrap: break-word"
+										href="chitietsanpham/${sp.getMaSP() }?ctsp">${sp.getTenSP() }</a>
+									<div
+										class="d-flex align-items-center justify-content-center mt-2">
+										<h5>${sp.getGia()}VNĐ</h5>
 
+									</div>
 
-
-							</div>
-							<div class="text-center py-4 text-pd"
-								style="overflow-wrap: break-word;">
-								<a class="h6 text-decoration-none text-truncate"
-									style="word-wrap: break-word" href="">${sp.getTenSP() }</a>
-								<div
-									class="d-flex align-items-center justify-content-center mt-2">
-									<h5>${sp.getGia()} VNĐ</h5>
-									
 								</div>
-								
 							</div>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
+
+
+
+
+				</div>
+			</div>
+			<div class="col-12">
+				<div>
+					<tg:paging pagedListHolder="${pagedListHolder}"
+						pagedLink="${pagedLink}" />
+				</div>
+
 			</div>
 		</div>
-		<div class="col-12">
-			<div>
-				<tg:paging pagedListHolder="${pagedListHolder}"
-					pagedLink="${pagedLink}" />
-			</div>
-			
-		</div>
-	</div>
 	</div>
 	<!-- Shop Product End -->
 	</div>

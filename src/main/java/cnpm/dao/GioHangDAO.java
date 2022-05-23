@@ -27,19 +27,19 @@ public class GioHangDAO {
 		query.setParameter("maKH", maKH);
 		
 		List< GioHang> list = query.list();
-		if(list.size() == 0) {
+		if(list.isEmpty()) {
 			return null;
 		}
 		
 		return list;
 	}
 	
-	public GioHang get1GioHang(String maKH, Integer maCTSP){
+	public GioHang get1GioHang(String maKH, Integer maChiTietSP){
 		Session session = factory.getCurrentSession();
-		String hql = "from  DonHang where maKH = :maKH and maCTSP = :maCTSP";
+		String hql = "from  GioHang where maKH = :maKH and maChiTietSP = :maChiTietSP";
 		Query query = session.createQuery(hql);
 		query.setParameter("maKH", maKH);
-		query.setParameter("maCTSP", maCTSP);
+		query.setParameter("maChiTietSP", maChiTietSP);
 		
 		List< GioHang> list = query.list();
 		if(list.size() == 0) {

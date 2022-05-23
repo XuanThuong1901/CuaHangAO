@@ -74,7 +74,16 @@ public class KhachHangController {
 	public List<GioHang> getDSGioHang(HttpSession ss) {
 		TaiKhoan tk = (TaiKhoan) ss.getAttribute("user");
 		List<GioHang> list = gioHangService.getDSGioHang(tk.getKhachHang().getMaKH());
-		System.out.println(list.size());
+		if(list == null) {
+			return null;
+		}
+		double tongtien=0;
+		for(int i=0; i<list.size(); i++) {
+			tongtien += (double)(list.get(i).getSoLuong()*list.get(i).getChiTietSP().getSanPham().getGia());
+		}
+		double tongdon = tongtien + (double)21000;
+		ss.setAttribute("tongtien", tongtien);
+		ss.setAttribute("tongdon", tongdon);
 		return list;
 	}
 	
@@ -114,10 +123,10 @@ public class KhachHangController {
 		return "shop/giohang";
 	}
 	
-// @RequestParam("size") String size,
+// 
 	@RequestMapping(value = "chitietsanpham/{maSP}", params = "themvaogio", method = RequestMethod.POST)
 	public String themGioHang(ModelMap model, HttpServletRequest request, @PathVariable("maSP") Integer maSP,
-			 @RequestParam("soluong") Integer soLuong,
+			@RequestParam("size") Integer size, @RequestParam("soluong") Integer soLuong,
 			HttpSession ss) {
 		/// check chi cho khach hang dc them
 
@@ -126,28 +135,38 @@ public class KhachHangController {
 			return "shop/chitietsanpham";
 		}
 		
-		ChiTietSanPham ctsp = chiTietSanPhamService.getByMaSPandMaSize(maSP, 2);
+		ChiTietSanPham ctsp = chiTietSanPhamService.getByMaSPandMaSize(maSP, size);
 		TaiKhoan tk = (TaiKhoan) ss.getAttribute("user");
 		
-		GioHang gioHang = new GioHang();
-		GioHangPK gioHangpk = new GioHangPK();
-		gioHangpk.setMaCTSP(ctsp.getMaChiTietSP());
-		gioHangpk.setMaKH(tk.getKhachHang().getMaKH());
+		System.out.println(ctsp.getMaChiTietSP());
 		
-		gioHang.setGioHangPK(gioHangpk);
-		gioHang.setChiTietSP(ctsp);
-		gioHang.setKhangHang(tk.getKhachHang());
-		gioHang.setSoLuong(soLuong);
-		
-		//gioHang.setGioHangPK(gioHangpk);
-		
-		System.out.println(soLuong);
-		
-		if(gioHangService.themGH(gioHang)) {
-			model.addAttribute("themgiohang", "Thêm sản phẩm thành công");
+		GioHang gioHang = gioHangService.get1GioHang(tk.getKhachHang().getMaKH(), ctsp.getMaChiTietSP());
+		if(gioHang == null) {
+			gioHang = new GioHang();
+			GioHangPK gioHangpk = new GioHangPK();
+			gioHangpk.setMaCTSP(ctsp.getMaChiTietSP());
+			gioHangpk.setMaKH(tk.getKhachHang().getMaKH());
+			
+			gioHang.setGioHangPK(gioHangpk);
+			gioHang.setChiTietSP(ctsp);
+			gioHang.setKhangHang(tk.getKhachHang());
+			gioHang.setSoLuong(soLuong);
+			
+			if(gioHangService.themGH(gioHang)) {
+				model.addAttribute("themgiohang", "Thêm sản phẩm thành công");
+			}
+			else {
+				model.addAttribute("themgiohang", "Thêm sản phẩm thất bại");
+			}
 		}
 		else {
-			model.addAttribute("themgiohang", "Thêm sản phẩm thất bại");
+			gioHang.setSoLuong(gioHang.getSoLuong()+soLuong);
+			if(gioHangService.suaGH(gioHang)) {
+				model.addAttribute("themgiohang", "Thêm sản phẩm thành công");
+			}
+			else {
+				model.addAttribute("themgiohang", "Thêm sản phẩm thất bại");
+			}
 		}
 		
 		return "shop/chitietsanpham";
@@ -235,6 +254,7 @@ public class KhachHangController {
 		GioHang giohang = gioHangService.get1GioHang(tk.getKhachHang().getMaKH(), mactsp);
 		
 		gioHangService.xoaGH(giohang);
+		model.addAttribute("danhSachGioHang", gioHangService.getDSGioHang(tk.getKhachHang().getMaKH()));
 		
 		return "shop/giohang";
 	}
@@ -242,7 +262,7 @@ public class KhachHangController {
 	@RequestMapping(value = "giohang", params = "thanhtoan", method = RequestMethod.POST)
 	public String thanhToan(ModelMap model, HttpServletRequest request,
 			@RequestParam("httt") Integer httt, HttpSession ss,
-			@RequestParam("tongtien") Integer tongtien, @RequestParam("ghichu") String ghichu) {
+			 @RequestParam(name="ghichu", required = false) String ghichu) {
 		/// check chi cho khach hang dc them
 
 		TaiKhoan tk = (TaiKhoan) ss.getAttribute("user");
@@ -263,26 +283,37 @@ public class KhachHangController {
 		donhang.setThoiGian(date);
 		donhang.setSdtKH(tk.getKhachHang().getSdt());
 		donhang.setTrangThaiDH(trangthaidh);
-		donhang.setTongTien(tongtien);
+		
+		String tongtien = ss.getAttribute("tongdon").toString();
+		double tt = Double.parseDouble(tongtien);
+		
+		donhang.setTongTien(tt);
+		System.out.println(tt);
 		
 		if(donHangService.themDH(donhang)) {
+			System.out.println(1);
 			int madh = donHangService.maPNCuoiCung();
 			donhang = donHangService.getByMaDH(madh);
 			ChiTietDonHang ctdh = new ChiTietDonHang();
+			System.out.println(2);
 			ChiTietDonHangPK ctdhpk = new ChiTietDonHangPK();
 			for(int i=0; i<listgh.size();i++) {
+				System.out.println(3);
 				ctdh.setDonHang(donhang);
 				ctdh.setChiTietSP(listgh.get(i).getChiTietSP());
 				ctdh.setSoLuong(listgh.get(i).getSoLuong());
 				ctdh.setGia(listgh.get(i).getChiTietSP().getSanPham().getGia());
 				ctdhpk.setMaCTSP(listgh.get(i).getChiTietSP().getMaChiTietSP());
-				ctdhpk.setMaKH(tk.getKhachHang().getMaKH());
+				ctdhpk.setMaDH(madh);
 				ctdh.setChiTietDonHangPK(ctdhpk);
 				
 				if(chiTietDonHangService.themCTDH(ctdh)) {
+					System.out.println(4);
 					gioHangService.xoaGH(listgh.get(i));
+					System.out.println(4);
 				}
 				else {
+					System.out.println(5);
 					model.addAttribute("muahang", "Mua hàng thất bại");
 					return "shop/giohang";
 				}

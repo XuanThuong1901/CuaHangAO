@@ -85,7 +85,7 @@
 						<button class="btn btn-primary px-3" name="themvaogio">
 							<i class="fa fa-shopping-cart mr-1"> </i> Thêm vào giỏ hàng
 						</button>
-
+						<p class="text-danger">${themgiohang }</p>
 					</div>
 				</div>
 			</form>

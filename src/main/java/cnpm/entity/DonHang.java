@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,6 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "DonHang")
 public class DonHang {
 	@Id
+	@GeneratedValue
 	@Column(name = "MaDH")
 	private int maDH;
 
@@ -54,7 +56,7 @@ public class DonHang {
 	private TrangThaiDonHang trangThaiDH;
 
 	@Column(name = "TongTien")
-	private float tongTien;
+	private double tongTien;
 
 	@OneToMany(mappedBy = "donHang", fetch = FetchType.LAZY)
 	private Collection<ChiTietDonHang> chiTietDonHangs;
@@ -131,11 +133,11 @@ public class DonHang {
 		this.trangThaiDH = trangThaiDH;
 	}
 
-	public float getTongTien() {
+	public double getTongTien() {
 		return tongTien;
 	}
 
-	public void setTongTien(float tongTien) {
+	public void setTongTien(double tongTien) {
 		this.tongTien = tongTien;
 	}
 
